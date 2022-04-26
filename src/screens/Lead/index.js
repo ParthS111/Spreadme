@@ -11,6 +11,8 @@ import DropdwonIcon from '../../Assets/Small_icon/dropdown.png'
 import FloatingInputText from '../../Components/FloatingInputText'
 import Search from '../../Assets/Small_icon/search.png'
 import LeadCard from '../../Components/LeadCard'
+import { connect } from 'react-redux';
+
 const data=[
     {label: 'one', value: 'one'},
     {label: 'two', value: 'two'}
@@ -85,4 +87,15 @@ class LeadListing extends Component {
         )
     }
 }
-export default LeadListing
+
+const mapStateToProps = state => {
+    console.log(state)
+    return{
+
+    }
+}
+  
+
+
+  export default connect(mapStateToProps,null)(LeadListing)
+// export default LeadListing

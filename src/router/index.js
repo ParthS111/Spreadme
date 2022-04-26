@@ -10,9 +10,10 @@ import SplashScreen from '../screens/SplashScreen'
 const Stack = createNativeStackNavigator();
 
 const RootNavigator = () => {
+    console.log("hdfjhdsbfhsdbfhksdk");
     return (
         <NavigationContainer>
-            <Stack.Navigator initialRouteName='SplashScreen'>
+            <Stack.Navigator >
             <Stack.Screen name={Routes.SplashScreen} component={SplashScreen} options={{
                     headerShown: false,
                 }} />

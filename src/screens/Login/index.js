@@ -8,8 +8,11 @@ import EmailICon from '../../Assets/icon/email_icon.png'
 import Pin from '../../Assets/icon/pin.png'
 import Label from '../../Components/Label';
 import { APIRequest, ApiURL, API_LOGIN } from '../../api';
-
-export default class Login extends Component {
+import Routes from '../../router/routes'
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { getToken } from '../../redux/action';
+class Login extends Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -48,7 +51,12 @@ export default class Login extends Component {
             .doRequest();
     }
     onResponse = (res) => {
-        console.log(res,'555');
+        console.log(res.data.accessToken,'555');
+        this.props.getToken(res.data.accessToken)
+        this.props.navigation.reset({
+            index: 0,
+            routes: [{ name: Routes.Authenticated }],
+        });
         this.props.navigation.push("Lead")
     }
     onError = (err) => {
@@ -58,8 +66,7 @@ export default class Login extends Component {
     render() {
         return (
             <View style={styles.container}>
-                {/* <Header title={'Dashboard'} url={{ uri: 'http://www.free-avatars.com/data/media/37/cat_avatar_0597.jpg' }}/> */}
-                <View style={styles.logoContainer}>
+               <View style={styles.logoContainer}>
                     <Image
                         resizeMode="contain"
                         style={{
@@ -100,3 +107,11 @@ export default class Login extends Component {
         );
     }
 }  
+
+
+const mapDispatchToProps = dispatch => ({
+    getToken:(token)=> dispatch(getToken(token)),
+  });
+
+
+  export default connect(null,mapDispatchToProps)(Login)

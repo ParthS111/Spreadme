@@ -25,8 +25,12 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 import RootNavigator from './src/router'
+import { Provider } from 'react-redux';
 
 
+import store from './src/redux/store';
+// const store = configureStore()
+console.log(store);
 const App = () => {
   const isDarkMode = useColorScheme() === 'dark';
 
@@ -36,8 +40,10 @@ const App = () => {
 
   return (
     <SafeAreaView style={{flex:1}}>
+      <Provider store = { store }>
       <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
       <RootNavigator/>
+      </Provider>
     </SafeAreaView>
   );
 };

@@ -1,7 +1,8 @@
 import axios from 'axios';
-// import { store } from '../redux/store';
+import store from '../redux/store';
 import ResponseCode from "../utils/Constants";
-// import DeviceInfo from 'react-native-device-info';
+
+
 import ENV from "../utils/Constants";
 
 let axiosInstance = axios.create({
@@ -10,16 +11,15 @@ let axiosInstance = axios.create({
 });
 
 axiosInstance.defaults.headers.post['content-type'] = 'application/json';
-// axiosInstance.defaults.headers.post['Version'] = DeviceInfo.getVersion() ;
-
-// store.subscribe(listener);
+store.subscribe(listener);
 
 function listener() {
-    // if (store.getState() !== undefined) {
-    //     axiosInstance.defaults.headers.common['Authorization'] = `Bearer ${store.getState().token}`;
+    if (store.getState() !== undefined) {
+        console.log(store.getState(),'store');
+        axiosInstance.defaults.headers.common['Authorization'] = `Bearer ${store.getState().token}`;
     //     axiosInstance.defaults.headers.common['Version'] = DeviceInfo.getVersion();
     //     axiosInstance.defaults.headers.common['app_type'] = "parent";
-    // }
+    }
 }
 
 axiosInstance.interceptors.request.use(

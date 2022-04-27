@@ -27,8 +27,9 @@ import {
 import RootNavigator from './src/router'
 import { Provider } from 'react-redux';
 
-
+import LeadListing from './src/screens/Login'
 import store from './src/redux/store';
+import { Color } from './src/utils';
 // const store = configureStore()
 console.log(store);
 const App = () => {
@@ -40,9 +41,10 @@ const App = () => {
 
   return (
     <SafeAreaView style={{flex:1}}>
+      <StatusBar  backgroundColor={Color.BACKGROUND}  />
       <Provider store = { store }>
-      <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
       <RootNavigator/>
+      {/* <LeadListing /> */}
       </Provider>
     </SafeAreaView>
   );

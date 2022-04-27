@@ -20,6 +20,13 @@ class Login extends Component {
             password: ''
         }
     }
+    componentDidMount(){
+        // this.props.navigation.reset({
+        //     index: 0,
+        //     routes: [{ name: Routes.Authenticated }],
+        // });
+        // this.props.navigation.push("Lead")
+    }
     login = () => {
         Keyboard.dismiss();
         let emailError, passError;

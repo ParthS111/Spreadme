@@ -12,6 +12,7 @@ import FloatingInputText from '../../Components/FloatingInputText'
 import Search from '../../Assets/Small_icon/search.png'
 import LeadCard from '../../Components/LeadCard'
 import { connect } from 'react-redux';
+import { APIRequest, ApiURL, FILTER, LEAD } from '../../api'
 
 const data=[
     {label: 'one', value: 'one'},
@@ -23,9 +24,76 @@ class LeadListing extends Component {
         this.state={
             childGrade:'',
             open:false,
-            selectedValue:[]
+            selectedValue:[],
+            filterList:data,
+            value:''
         }
+        this.setValue = this.setValue.bind(this);
     }
+
+    componentDidMount(){
+    this.userLead()
+    this.userFilter()
+
+    }
+    userFilter = () => {
+        let param = {
+           
+        };
+        console.log("partmmmm");
+        new APIRequest.Builder()
+            .post()
+            .setReqId(FILTER)
+            .reqURL(ApiURL.filter)
+            .jsonParams(param)
+            .response(this.onResponseFIlter)
+            .error(this.onErrorFilter)
+            .build()
+            .doRequest();
+    }
+    onResponseFIlter = (res) => {
+        // console.log(res.data.content,'0000');
+       
+        let array=[]
+        for (var item of res.data.content){
+            array.push({label:item.name,value:item.name})
+            this.setState({filterList:array})
+            console.log(array);
+        }
+       
+    }
+    onErrorFilter = (err) => {
+        console.log(err);
+        alert(err.message)
+    }
+    userLead = () => {
+        let param = {
+           
+        };
+        console.log("partmmmm");
+        new APIRequest.Builder()
+            .post()
+            .setReqId(LEAD)
+            .reqURL(ApiURL.lead)
+            .jsonParams(param)
+            .response(this.onResponse)
+            .error(this.onError)
+            .build()
+            .doRequest();
+    }
+    onResponse = (res) => {
+        // console.log(res.data.content[0].formProperty,'555');
+       
+    }
+    onError = (err) => {
+        console.log(err);
+        alert(err.message)
+    }
+    setValue(callback) {
+        this.setState(state => ({
+          value: callback(state.value)
+        }),()=>{console.log(this.state.value);});
+      }
     render() {
         return (
             <View style={styles.container}>
@@ -38,7 +106,7 @@ class LeadListing extends Component {
                     <Card  style={{zIndex:10}}>
                         <View style={{zIndex:10,elevation:10, width: ThemeUtils.relativeWidth(80), paddingHorizontal:10 ,paddingVertical:8}}>
                             <DropDownPicker
-                                items={data}
+                                items={this.state.filterList}
                                 customArrowDown={() => <Image
                                     source={DropdwonIcon}
                                     resizeMode="contain"
@@ -58,8 +126,9 @@ class LeadListing extends Component {
                                 placeholderStyle={{ fontSize: 16, color: Color.ONBOARDING_TEXT }}
                                 labelStyle={styles.dwLabel}
                                 dropDownStyle={styles.dwStyle}
-                                setValue={(item) => console.log(item)}
+                                setValue={this.setValue}
                                 arrowSize={10}
+                                // onChangeItem={item => ¸}
                                 arrowColor={Color.ICON_GREY}
                                 arrowStyle={{ marginRight: 10 }}
 
@@ -89,7 +158,7 @@ class LeadListing extends Component {
 }
 
 const mapStateToProps = state => {
-    console.log(state)
+    // console.log(state)
     return{
 
     }

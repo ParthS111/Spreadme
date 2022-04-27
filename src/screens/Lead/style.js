@@ -43,7 +43,7 @@ export const styles = StyleSheet.create({
         marginLeft: 20
         
       },
-      dwStyle: { backgroundColor: Color.WHITE, height: 300, marginTop: 10, borderRadius: 10 },
+      dwStyle: { backgroundColor: Color.WHITE, height: 300, marginTop: ThemeUtils.relativeHeight(2), borderRadius: 10 },
       toast: { marginTop: ThemeUtils.relativeHeight(8) },
      
       dropdownImg: {

@@ -58,12 +58,10 @@ export default class FloatingInputText extends Component {
                     </View>
                     {this.props.message &&
                         <Label
-                            poppins_medium
                             style={[this.props.style]}
                             xxsmall color={Color.PRIMARY}>{this.props.message}</Label>}
                     {this.props.errorMessage &&
                         <Label
-                            poppins_medium
                             style={[this.props.style]}
                             xsmall color={Color.PRIMARY}>{this.props.errorMessage}</Label>
 

@@ -12,7 +12,7 @@ let axiosInstance = axios.create({
 
 axiosInstance.defaults.headers.post['content-type'] = 'application/json';
 store.subscribe(listener);
-
+console.log(store.getState(),'store1111');
 function listener() {
     if (store.getState() !== undefined) {
         console.log(store.getState(),'store');
@@ -31,7 +31,6 @@ axiosInstance.interceptors.request.use(
 
 
 axiosInstance.interceptors.response.use((response) => {
-    console.log(response.data,'response');
     let dataResponse = {
         status: response.data.statusCode,
         message: response.data.message,

@@ -113,7 +113,6 @@ export default class PasswordInputText extends Component {
               tintColor={Color.PRIMARY}
               autoCapitalize="none"
               labelTextStyle={{
-                fontFamily: 'Poppins-Regular',
                
                 color: Color.PRIMARY,
               }}

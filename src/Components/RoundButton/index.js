@@ -59,7 +59,7 @@ class RoundButton extends React.Component {
             borderBottomWidth: 0,
             elevation: 5
         });
-        btnTextStylesArray.push({ color: this.props.textColor, fontFamily: "Poppins-SemiBold" });
+        btnTextStylesArray.push({ color: this.props.textColor,  });
         return (
             
             <TouchableHighlight activeOpacity={0.2} underlayColor="#ffffff00"  onPress={this.onClick} style={btnWholeStyles}>

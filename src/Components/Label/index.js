@@ -49,19 +49,19 @@ class Label extends React.Component {
         else
             stylesArray.push({fontWeight: "normal"});
 
-        if (this.props.poppins_medium)
-            stylesArray.push({fontFamily: "Poppins-Medium"});
-        else if (this.props.poopins_regular)
-            stylesArray.push({fontFamily: "Poppins-Regular"});
-            else if (this.props.poopins_semibold)
-            stylesArray.push({fontFamily: "Poppins-SemiBold"});
-        else
-            stylesArray.push({fontFamily: "Poppins-Regular"});
+        // if (this.props.poppins_medium)
+        //     stylesArray.push({fontFamily: "Poppins-Medium"});
+        // else if (this.props.poopins_regular)
+        //     stylesArray.push({fontFamily: "Poppins-Regular"});
+        //     else if (this.props.poopins_semibold)
+        //     stylesArray.push({fontFamily: "Poppins-SemiBold"});
+        // else
+        //     stylesArray.push({fontFamily: "Poppins-Regular"});
         
-        if(this.props.device_info)
-            stylesArray.push({color:Color.LIGHT_BLUE})
-        else
-            stylesArray.push({fontFamily: "Poppins-Regular"});
+        // if(this.props.device_info)
+        //     stylesArray.push({color:Color.LIGHT_BLUE})
+        // else
+        //     stylesArray.push({fontFamily: "Poppins-Regular"});
 
         stylesArray.push({
             color: this.props.color,
@@ -129,8 +129,8 @@ Label.propTypes = {
     me: PropTypes.number,
     align: PropTypes.string,
     singleLine: PropTypes.bool,
-    poppins_medium: PropTypes.bool,
-    poopins_regular: PropTypes.bool,
-    poopins_semibold: PropTypes.bool
+    // poppins_medium: PropTypes.bool,
+    // poopins_regular: PropTypes.bool,
+    // poopins_semibold: PropTypes.bool
 };
 export default Label;

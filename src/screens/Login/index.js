@@ -32,7 +32,7 @@ class Login extends Component {
         let emailError, passError;
         const { email, password } = this.state
         if (email.trim() == '' || password.trim() == '') {
-            alert(`wrong ${email}`)
+            alert(`Please enter credentials`)
 
         }
         else {
@@ -58,7 +58,6 @@ class Login extends Component {
             .doRequest();
     }
     onResponse = (res) => {
-        console.log(res.data.accessToken,'555');
         this.props.getToken(res.data.accessToken)
         this.props.navigation.reset({
             index: 0,
@@ -67,8 +66,7 @@ class Login extends Component {
         this.props.navigation.push("Lead")
     }
     onError = (err) => {
-        console.log(err);
-        alert(err.message)
+        alert("Wrong Credentials")
     }
     render() {
         return (

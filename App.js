@@ -5,7 +5,7 @@
  * @format
  * @flow strict-local
  */
-
+ import 'react-native-gesture-handler'
 import React from 'react';
 import {
   SafeAreaView,
@@ -40,13 +40,10 @@ const App = () => {
   };
 
   return (
-    <SafeAreaView style={{flex:1}}>
-      <StatusBar  backgroundColor={Color.BACKGROUND}  />
-      <Provider store = { store }>
+    <Provider store = { store }>
+        <StatusBar  backgroundColor={Color.BACKGROUND}  />
       <RootNavigator/>
-      {/* <LeadListing /> */}
       </Provider>
-    </SafeAreaView>
   );
 };
 

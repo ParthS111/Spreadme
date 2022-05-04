@@ -8,7 +8,7 @@ export const styles = StyleSheet.create({
         backgroundColor: Color.BG_COLOR,  
     },
     center: {
-        justifyContent: 'center', alignItems: 'center'
+        justifyContent: 'center', alignItems: 'center',marginTop:ThemeUtils.relativeHeight(1)
     },
     card: {
         height: ThemeUtils.relativeHeight(14),

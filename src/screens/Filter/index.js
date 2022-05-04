@@ -1,17 +1,27 @@
-import { Text, View, TouchableOpacity } from 'react-native'
+import { SafeAreaView, View, TouchableOpacity } from 'react-native'
 import React, { Component } from 'react'
 import { styles } from './style'
 import Header from '../../Components/Header'
 import { Color, ThemeUtils } from '../../utils'
 import Label from '../../Components/Label'
 import FilterCard from '../../Components/FilterCard'
+import Profile from '../../Assets/Images/profile.jpg'
+import Routes from '../../router/routes'
 
 export class Filter extends Component {
+
+    goBack=()=>{
+        this.props.navigation.reset({
+            index: 0,
+            routes: [{ name: Routes.Authenticated }],
+        });
+        this.props.navigation.push("Lead")
+      }
     render() {
         return (
-            <View style={styles.container}>
+            <SafeAreaView style={styles.container}>
                 <View style={{ flex: 0.1 }}>
-                    <Header title={'Dashboard'} url={{ uri: 'http://www.free-avatars.com/data/media/37/cat_avatar_0597.jpg' }} />
+                    <Header title={'Dashboard'} url={Profile} BackBtn={()=>this.goBack()}  />
                 </View>
                 <View style={[styles.center, { flex: 0.2,justifyContent:'space-between' }]}>
                     <View style={[styles.center, styles.card]}>
@@ -26,7 +36,7 @@ export class Filter extends Component {
                     <FilterCard />
                 </View>
 
-            </View>
+            </SafeAreaView>
         )
     }
 }

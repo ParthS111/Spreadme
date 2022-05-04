@@ -12,7 +12,7 @@ export const Color = {
         "#445c6d",
     TRANSPARENT:
         "transparent",
-    RED: "red",
+    // RED: "red",
     TEXT_PRIMARY: "#96979B",
     WHITE_BLUE:"#73E8DA",
     INPUT_TEXT_PRIMARY: "#323232",

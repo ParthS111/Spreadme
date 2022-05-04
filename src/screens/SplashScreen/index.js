@@ -5,7 +5,7 @@ export class SplashScreen extends Component {
     componentDidMount(){
         this.props.navigation.reset({
           index: 0,
-          routes: [{ name: Routes.NotAuthenticated }],
+          routes: [{ name: Routes.Authenticated }],
       });
     }
   render() {

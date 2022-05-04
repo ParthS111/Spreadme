@@ -1,5 +1,5 @@
 
-import { Text, StyleSheet, View, TouchableOpacity } from 'react-native'
+import { SafeAreaView, StyleSheet, View, TouchableOpacity } from 'react-native'
 import React, { Component } from 'react'
 import { Color, ThemeUtils } from '../../utils'
 import Label from '../../Components/Label'
@@ -13,7 +13,8 @@ import Search from '../../Assets/Small_icon/search.png'
 import LeadCard from '../../Components/LeadCard'
 import { connect } from 'react-redux';
 import { APIRequest, ApiURL, FILTER, LEAD } from '../../api'
-
+import Profile from '../../Assets/Images/profile.jpg'
+import Routes from '../../router/routes'
 const data=[
     {label: 'one', value: 'one'},
     {label: 'two', value: 'two'}
@@ -94,13 +95,20 @@ class LeadListing extends Component {
           value: callback(state.value)
         }),()=>{console.log(this.state.value);});
       }
+      goBack=()=>{
+        this.props.navigation.reset({
+            index: 0,
+            routes: [{ name: Routes.Authenticated }],
+        });
+        this.props.navigation.push("Filter")
+      }
     render() {
         return (
-            <View style={styles.container}>
+            <SafeAreaView style={styles.container}>
                 <View style={{ flex: 0.1 }}>
                     <Header  title={'Lead Lasting'}
-                    BackBtn={()=>console.log("knjknjkn")}
-                     url={{ uri: 'http://www.free-avatars.com/data/media/37/cat_avatar_0597.jpg' }} />
+                    BackBtn={()=>this.goBack()}
+                     url={Profile} />
                 </View>
                 <View style={[styles.center, { flex: 0.3,}]}>
                     <Card  style={{zIndex:10}}>
@@ -138,7 +146,6 @@ class LeadListing extends Component {
                     <View style={{width:ThemeUtils.relativeWidth(95)}}>
                     <FloatingInputText
                             value={this.state.search}
-                            secureTextEntry={true}
                             keyboardType="default"
                             onChangeText={(search) => this.setState({ search })}
                             icon={Search}
@@ -152,7 +159,7 @@ class LeadListing extends Component {
                                         <LeadCard/>
                 </View>
 
-            </View>
+            </SafeAreaView>
         )
     }
 }
